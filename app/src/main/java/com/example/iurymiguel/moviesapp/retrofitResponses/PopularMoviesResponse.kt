@@ -43,6 +43,50 @@ class PopularMoviesResponse {
 
         @SerializedName("poster_path")
         var posterPath: String = Utils.POSTER_PATH_BASE_URL
+
+        @SerializedName("production_companies")
+        lateinit var productionCompanies: List<ProductionCompany>
+
+        @SerializedName("production_countries")
+        lateinit var productionCountries: List<ProductionCountry>
+
+        @SerializedName("spoken_languages")
+        lateinit var spokenLanguages: List<SpokenLanguage>
+
+
+        inner class ProductionCompany {
+
+            @SerializedName("id")
+            var id: Int = 0
+
+            @SerializedName("logo_path")
+            lateinit var logoPath: String
+
+            @SerializedName("name")
+            lateinit var name: String
+
+            @SerializedName("origin_country")
+            lateinit var originCountry: String
+
+        }
+
+        inner class ProductionCountry {
+            @SerializedName("iso_3166_1")
+            lateinit var countryCode: String
+
+            @SerializedName("name")
+            lateinit var name: String
+        }
+
+        inner class SpokenLanguage {
+
+            @SerializedName("iso_639_1")
+            lateinit var languageCode: String
+
+            @SerializedName("name")
+            lateinit var name: String
+        }
+
     }
 
 }
