@@ -16,77 +16,73 @@ class PopularMoviesResponse {
 
     @SerializedName("results")
     lateinit var results: List<PopularMovie>
+}
 
+class PopularMovie {
 
-    inner class PopularMovie {
+    @SerializedName("id")
+    val id: Int = 0
 
-        @SerializedName("id")
-        val id: Int = 0
+    @SerializedName("title")
+    lateinit var title: String
 
-        @SerializedName("title")
-        lateinit var title: String
+    @SerializedName("original_title")
+    lateinit var originalTitle: String
 
-        @SerializedName("original_title")
-        lateinit var originalTitle: String
+    @SerializedName("original_language")
+    lateinit var originalLanguage: String
 
-        @SerializedName("original_language")
-        lateinit var originalLanguage: String
+    @SerializedName("vote_average")
+    var voteAverage: Double = 0.0
 
-        @SerializedName("vote_average")
-        var voteAverage: Double = 0.0
+    @SerializedName("overview")
+    lateinit var overview: String
 
-        @SerializedName("overview")
-        lateinit var overview: String
+    @SerializedName("release_date")
+    lateinit var releaseDate: String
 
-        @SerializedName("release_date")
-        lateinit var releaseDate: String
+    @SerializedName("poster_path")
+    var posterPath: String = Utils.POSTER_PATH_BASE_URL
 
-        @SerializedName("poster_path")
-        var posterPath: String = Utils.POSTER_PATH_BASE_URL
+    @SerializedName("production_companies")
+    lateinit var productionCompanies: List<ProductionCompany>
 
-        @SerializedName("production_companies")
-        lateinit var productionCompanies: List<ProductionCompany>
+    @SerializedName("production_countries")
+    lateinit var productionCountries: List<ProductionCountry>
 
-        @SerializedName("production_countries")
-        lateinit var productionCountries: List<ProductionCountry>
+    @SerializedName("spoken_languages")
+    lateinit var spokenLanguages: List<SpokenLanguage>
+}
 
-        @SerializedName("spoken_languages")
-        lateinit var spokenLanguages: List<SpokenLanguage>
+class ProductionCompany {
 
+    @SerializedName("id")
+    var id: Int = 0
 
-        inner class ProductionCompany {
+    @SerializedName("logo_path")
+    lateinit var logoPath: String
 
-            @SerializedName("id")
-            var id: Int = 0
+    @SerializedName("name")
+    lateinit var name: String
 
-            @SerializedName("logo_path")
-            lateinit var logoPath: String
+    @SerializedName("origin_country")
+    lateinit var originCountry: String
 
-            @SerializedName("name")
-            lateinit var name: String
+}
 
-            @SerializedName("origin_country")
-            lateinit var originCountry: String
+class ProductionCountry {
+    @SerializedName("iso_3166_1")
+    lateinit var countryCode: String
 
-        }
+    @SerializedName("name")
+    lateinit var name: String
+}
 
-        inner class ProductionCountry {
-            @SerializedName("iso_3166_1")
-            lateinit var countryCode: String
+class SpokenLanguage {
 
-            @SerializedName("name")
-            lateinit var name: String
-        }
+    @SerializedName("iso_639_1")
+    lateinit var languageCode: String
 
-        inner class SpokenLanguage {
-
-            @SerializedName("iso_639_1")
-            lateinit var languageCode: String
-
-            @SerializedName("name")
-            lateinit var name: String
-        }
-
-    }
-
+    @SerializedName("name")
+    lateinit var name: String
 }

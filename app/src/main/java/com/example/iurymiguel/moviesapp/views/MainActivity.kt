@@ -1,7 +1,8 @@
-package com.example.iurymiguel.moviesapp
+package com.example.iurymiguel.moviesapp.views
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import com.example.iurymiguel.moviesapp.R
 
 class MainActivity : AppCompatActivity() {
 
