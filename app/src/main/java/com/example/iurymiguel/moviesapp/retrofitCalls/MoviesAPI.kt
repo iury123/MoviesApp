@@ -6,6 +6,6 @@ import retrofit2.http.GET
 import retrofit2.http.Query
 
 interface MoviesAPI {
-    @GET("/movie/popular")
+    @GET("movie/popular")
     fun getPopularMovies(@Query("page") page: Int): Call<PopularMoviesResponse>
 }

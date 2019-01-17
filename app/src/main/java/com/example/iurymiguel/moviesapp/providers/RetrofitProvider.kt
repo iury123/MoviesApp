@@ -1,5 +1,6 @@
 package com.example.iurymiguel.moviesapp.providers
 
+import com.example.iurymiguel.moviesapp.retrofitCalls.MoviesAPI
 import com.example.iurymiguel.moviesapp.utils.Utils
 import okhttp3.*
 import retrofit2.Retrofit
@@ -16,6 +17,9 @@ class RetrofitProvider {
         .addConverterFactory(GsonConverterFactory.create())
         .client(mClient)
         .build()
+
+
+    fun getMovieApi() = retrofit.create(MoviesAPI::class.java)
 
 
     inner class RetrofitInterceptor : Interceptor {
@@ -35,6 +39,5 @@ class RetrofitProvider {
             val response = chain.proceed(request)
             return response
         }
-
     }
 }
