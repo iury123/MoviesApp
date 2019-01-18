@@ -17,7 +17,6 @@ import java.net.URL
 
 class MoviesListAdapter : PagedListAdapter<PopularMovie, MoviesListAdapter.ViewHolder>(DIFF_CALLBACK) {
 
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
         val binding = MovieItemListBinding.inflate(layoutInflater, parent, false)

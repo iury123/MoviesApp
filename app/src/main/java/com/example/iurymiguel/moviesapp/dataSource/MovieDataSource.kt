@@ -1,6 +1,7 @@
 package com.example.iurymiguel.moviesapp.dataSource
 
 import android.arch.paging.PageKeyedDataSource
+import com.example.iurymiguel.moviesapp.providers.EventsProvider
 import com.example.iurymiguel.moviesapp.providers.RetrofitProvider
 import com.example.iurymiguel.moviesapp.retrofitResponses.PopularMovie
 import com.example.iurymiguel.moviesapp.retrofitResponses.PopularMoviesResponse
@@ -9,7 +10,10 @@ import retrofit2.Callback
 import retrofit2.Response
 
 
-class MovieDataSource(private val retrofitProvider: RetrofitProvider) :
+class MovieDataSource(
+    private val retrofitProvider: RetrofitProvider,
+    private val events: EventsProvider
+) :
     PageKeyedDataSource<Int, PopularMovie>() {
 
     companion object {
@@ -23,12 +27,13 @@ class MovieDataSource(private val retrofitProvider: RetrofitProvider) :
                 if (response.isSuccessful) {
                     response.body()?.let {
                         callback.onResult(it.results, null, FIRST_PAGE + 1)
+                        events.publishInitialLoad(it.results)
                     }
                 }
             }
 
             override fun onFailure(call: Call<PopularMoviesResponse>, t: Throwable) {
-
+                events.publishInitialLoad(listOf())
             }
         })
     }
@@ -45,7 +50,7 @@ class MovieDataSource(private val retrofitProvider: RetrofitProvider) :
             }
 
             override fun onFailure(call: Call<PopularMoviesResponse>, t: Throwable) {
-
+                val x = t
             }
         })
     }
