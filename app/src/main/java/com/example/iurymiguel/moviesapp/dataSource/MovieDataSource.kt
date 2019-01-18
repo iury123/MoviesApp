@@ -14,6 +14,7 @@ class MovieDataSource(private val retrofitProvider: RetrofitProvider) :
 
     companion object {
         const val FIRST_PAGE = 1
+        const val PAGE_SIZE = 20
     }
 
     override fun loadInitial(params: LoadInitialParams<Int>, callback: LoadInitialCallback<Int, PopularMovie>) {

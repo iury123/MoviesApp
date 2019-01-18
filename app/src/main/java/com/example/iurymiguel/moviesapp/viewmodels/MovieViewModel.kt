@@ -15,7 +15,7 @@ class MovieViewModel(private val movieDataSourceFactory: MovieDataSourceFactory)
     init {
         val config: PagedList.Config = PagedList.Config.Builder()
             .setEnablePlaceholders(false)
-            .setPageSize(MovieDataSource.FIRST_PAGE)
+            .setPageSize(MovieDataSource.PAGE_SIZE)
             .build()
         moviesPagedList = LivePagedListBuilder(movieDataSourceFactory, config).build()
     }
