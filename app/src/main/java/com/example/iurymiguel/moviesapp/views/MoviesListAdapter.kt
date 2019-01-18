@@ -2,18 +2,21 @@ package com.example.iurymiguel.moviesapp.views
 
 import android.arch.paging.PagedListAdapter
 import android.databinding.BindingAdapter
+import android.support.v4.app.Fragment
 import android.support.v7.util.DiffUtil
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.ImageView
-import android.widget.TextView
 import com.example.iurymiguel.moviesapp.databinding.MovieItemListBinding
 import com.example.iurymiguel.moviesapp.retrofitResponses.PopularMovie
 import com.bumptech.glide.Glide
+import com.example.iurymiguel.moviesapp.utils.Utils
+import java.net.URL
 
 
 class MoviesListAdapter : PagedListAdapter<PopularMovie, MoviesListAdapter.ViewHolder>(DIFF_CALLBACK) {
+
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
@@ -25,7 +28,6 @@ class MoviesListAdapter : PagedListAdapter<PopularMovie, MoviesListAdapter.ViewH
         val movie = getItem(position)
         holder.bind(movie!!)
     }
-
 
     inner class ViewHolder(private val binding: MovieItemListBinding) :
         RecyclerView.ViewHolder(binding.root) {
@@ -39,15 +41,15 @@ class MoviesListAdapter : PagedListAdapter<PopularMovie, MoviesListAdapter.ViewH
     companion object {
 
         private val DIFF_CALLBACK = object : DiffUtil.ItemCallback<PopularMovie>() {
-            override fun areItemsTheSame(oldItem: PopularMovie?, newItem: PopularMovie?) = oldItem?.id == newItem?.id
+            override fun areItemsTheSame(oldItem: PopularMovie, newItem: PopularMovie) = oldItem.id == newItem.id
 
-            override fun areContentsTheSame(oldItem: PopularMovie?, newItem: PopularMovie?) = oldItem == newItem
+            override fun areContentsTheSame(oldItem: PopularMovie, newItem: PopularMovie) = oldItem == newItem
         }
 
         @JvmStatic
-        @BindingAdapter("android:src")
+        @BindingAdapter("loadImage")
         fun loadImage(imageView: ImageView, url: String) {
-            Glide.with(imageView.context).load(url).into(imageView)
+            Glide.with(imageView.context).load(URL("${Utils.POSTER_PATH_BASE_URL}$url")).into(imageView)
         }
     }
 }

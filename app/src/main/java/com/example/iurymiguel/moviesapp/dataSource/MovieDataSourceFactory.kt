@@ -14,6 +14,4 @@ class MovieDataSourceFactory(private val movieDataSource: MovieDataSource) : Dat
         mMovieLiveDataSource.postValue(movieDataSource)
         return movieDataSource
     }
-
-    fun getMovieLiveDataSource() = mMovieLiveDataSource
 }

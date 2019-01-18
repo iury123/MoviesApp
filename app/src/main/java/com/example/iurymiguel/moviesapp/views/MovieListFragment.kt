@@ -11,7 +11,6 @@ import android.view.ViewGroup
 import com.example.iurymiguel.moviesapp.R
 import com.example.iurymiguel.moviesapp.databinding.FragmentMovieListBinding
 import com.example.iurymiguel.moviesapp.viewmodels.MovieViewModel
-import kotlinx.android.synthetic.main.fragment_movie_list.*
 import org.koin.android.ext.android.inject
 import org.koin.android.viewmodel.ext.android.viewModel
 
@@ -40,6 +39,7 @@ class MovieListFragment : Fragment() {
         recyclerView.apply {
             layoutManager = LinearLayoutManager(context)
             adapter = mAdapter
+            setHasFixedSize(true)
         }
 
         return mBinding.root

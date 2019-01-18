@@ -11,7 +11,6 @@ import com.example.iurymiguel.moviesapp.retrofitResponses.PopularMovie
 class MovieViewModel(private val movieDataSourceFactory: MovieDataSourceFactory) : ViewModel() {
 
     var moviesPagedList: LiveData<PagedList<PopularMovie>>
-    val mLiveDataSource = movieDataSourceFactory.getMovieLiveDataSource()
 
     init {
         val config: PagedList.Config = PagedList.Config.Builder()
